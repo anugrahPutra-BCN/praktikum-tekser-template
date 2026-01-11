@@ -1,0 +1,42 @@
+<% layout('layout') -%>
+<h3>Edit Produk</h3>
+
+<% if (errors.length) { %>
+  <div class="alert alert-danger">
+    <ul class="mb-0">
+      <% errors.forEach(e => { %><li><%= e %></li><% }) %>
+    </ul>
+  </div>
+<% } %>
+
+<form method="post" action="/products/<%= product.ID_Produk %>/edit" class="row g-3">
+  <div class="col-md-6">
+    <label class="form-label">Nama Produk</label>
+    <input name="Nama_Produk" class="form-control" value="<%= product.Nama_Produk %>">
+  </div>
+  <div class="col-md-3">
+    <label class="form-label">Harga</label>
+    <input name="Harga" type="number" min="0" class="form-control" value="<%= product.Harga %>">
+  </div>
+  <div class="col-md-3">
+    <label class="form-label">Stok</label>
+    <input name="Stok" type="number" min="0" class="form-control" value="<%= product.Stok %>">
+  </div>
+  <div class="col-md-6">
+    <label class="form-label">Kategori</label>
+    <select name="ID_Kategori" class="form-select">
+      <option value="">Pilih Kategori</option>
+      <% categories.forEach(c => { %>
+        <option value="<%= c.ID %>" <%= product.ID_Kategori===c.ID ? 'selected' : '' %>><%= c.Nama_Kategori %></option>
+      <% }) %>
+    </select>
+  </div>
+  <div class="col-12">
+    <label class="form-label">Deskripsi</label>
+    <textarea name="Deskripsi" class="form-control" rows="3"><%= product.Deskripsi || '' %></textarea>
+  </div>
+  <div class="col-12">
+    <button class="btn btn-warning">Update</button>
+    <a href="/products" class="btn btn-secondary">Kembali</a>
+  </div>
+</form>

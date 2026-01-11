@@ -1,0 +1,12 @@
+<% layout('layout') -%>
+<h3>Detail Produk</h3>
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title"><%= product.Nama_Produk %></h5>
+    <p class="card-text">Harga: Rp <%= product.Harga %></p>
+    <p class="card-text">Stok: <%= product.Stok %></p>
+    <p class="card-text">Kategori: <%= product.Nama_Kategori || '-' %></p>
+    <p class="card-text">Deskripsi: <%= product.Deskripsi || '-' %></p>
+    <a href="/products" class="btn btn-secondary">Kembali</a>
+  </div>
+</div>
